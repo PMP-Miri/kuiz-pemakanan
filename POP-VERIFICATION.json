@@ -1,0 +1,955 @@
+{
+  "version": "pop3-2026-10-28",
+  "runtime_checks": {
+    "method": "Executed actual module logic in an isolated rendered fixture; static imports transformed to local loader",
+    "passed": 320,
+    "total": 320,
+    "legacy_model_markup": 181,
+    "design_and_privacy": 128,
+    "syntax_compiles": 11,
+    "failed": []
+  },
+  "static_checks": [
+    {
+      "name": "User configuration excluded",
+      "pass": true
+    },
+    {
+      "name": "No SQL in design update",
+      "pass": true
+    },
+    {
+      "name": "Backend/scoring behavior byte-identical except module versions: src/core.js",
+      "pass": true
+    },
+    {
+      "name": "Backend/scoring behavior byte-identical except module versions: src/activities.js",
+      "pass": true
+    },
+    {
+      "name": "Backend/scoring behavior byte-identical except module versions: src/api.js",
+      "pass": true
+    },
+    {
+      "name": "Backend/scoring behavior byte-identical except module versions: src/demo.js",
+      "pass": true
+    },
+    {
+      "name": "Backend/scoring behavior byte-identical except module versions: src/audio.js",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: .nojekyll",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: LICENSE",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: assets/activities.css",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: assets/activity-diagram.svg",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: assets/arena-party.svg",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: assets/ceria.css",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: assets/display.css",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: assets/style.css",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: index.html",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: index.html -> assets/style.css",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: index.html -> assets/ceria.css",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: index.html -> assets/display.css",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: index.html -> assets/activities.css",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: index.html -> assets/pop.css",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: index.html -> src/app.js",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: index.html -> src/design.js",
+      "pass": true
+    },
+    {
+      "name": "HTML IDs unique: index.html",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: pegawai.html",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: pegawai.html -> assets/activities.css",
+      "pass": true
+    },
+    {
+      "name": "HTML IDs unique: pegawai.html",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: pratonton.html",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: pratonton.html -> assets/style.css",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: pratonton.html -> assets/ceria.css",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: pratonton.html -> assets/display.css",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: pratonton.html -> assets/activities.css",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: pratonton.html -> assets/pop.css",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: pratonton.html -> src/preview.js",
+      "pass": true
+    },
+    {
+      "name": "HTML asset exists: pratonton.html -> src/design.js",
+      "pass": true
+    },
+    {
+      "name": "HTML IDs unique: pratonton.html",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: src/activities.js",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: src/activity-ui.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/activity-ui.js -> src/core.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#escapeHTML",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#safeURL",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/activity-ui.js -> src/activities.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#TYPES",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#activityDefaults",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#kind",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#responseValid",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#normalText",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: src/api.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/api.js -> config.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/api.js -> src/demo.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/demo.js#demo",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: src/app.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/app.js -> src/stage-activities.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/stage-activities.js#stageActivityMarkup",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/app.js -> src/activities.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#TYPES",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#kind",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#assessed",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#responseValid",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#statsFor",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/app.js -> src/activity-ui.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#activityAnswer",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#activityEditor",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#typeOptions",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#switchType",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#applyActivityField",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#responseDraft",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#activateActivity",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#installActivityEvents",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#setActivityHooks",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#resetActivityDrafts",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#drawPreview",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/app.js -> config.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/app.js -> src/api.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/api.js#api",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/app.js -> src/core.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#THEMES",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#uid",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#escapeHTML",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#safeURL",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#validateQuiz",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#newQuiz",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#newQuestion",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#demoQuiz",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#activityGallery",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#rankRows",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#pairedReport",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#csv",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/app.js -> src/audio.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/audio.js#toggleSound",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/audio.js#effect",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/audio.js#setScene",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/audio.js#silence",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/app.js -> src/presentation.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#publicStageState",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#participantHome",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#screenMarkup",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#projectionGuide",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#hostDisplayNotice",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: src/audio.js",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: src/core.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/core.js -> src/activities.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#TYPES",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#validateActivity",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#activityDefaults",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: src/demo.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/demo.js -> src/core.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#uid",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#demoQuiz",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#validateQuiz",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#shuffle",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#scoreAnswer",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/demo.js -> src/activities.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#kind",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#assessed",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#mixActivity",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#evaluateResponse",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#publicQuestion",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#statsFor",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: src/presentation.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/presentation.js -> src/core.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#escapeHTML",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#rankRows",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: src/preview.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/preview.js -> src/presentation.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#participantHome",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#publicStageState",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#screenMarkup",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/preview.js -> src/core.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#escapeHTML",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/preview.js -> src/activities.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#TYPES",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#activityDefaults",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#publicQuestion",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/preview.js -> src/activity-ui.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#activityAnswer",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#activateActivity",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#installActivityEvents",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#setActivityHooks",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/preview.js -> src/stage-activities.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/stage-activities.js#stageActivityMarkup",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/preview.js -> src/design.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/design.js#enhancePresentation",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: tests/activities-flow.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: tests/activities-flow.js -> src/core.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#newQuiz",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#newQuestion",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#validateQuiz",
+      "pass": true
+    },
+    {
+      "name": "Import exists: tests/activities-flow.js -> src/activities.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#TYPES",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#activityDefaults",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#kind",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#statsFor",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: tests/activities-v2.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: tests/activities-v2.js -> src/activities.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#TYPES",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#activityDefaults",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#kind",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#assessed",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#normalText",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#numberValue",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#publicQuestion",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#responseValid",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#evaluateResponse",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#mixActivity",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#validateActivity",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#statsFor",
+      "pass": true
+    },
+    {
+      "name": "Import exists: tests/activities-v2.js -> src/core.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#newQuiz",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#newQuestion",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#validateQuiz",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#pairedReport",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#activityGallery",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#scoreAnswer",
+      "pass": true
+    },
+    {
+      "name": "Import exists: tests/activities-v2.js -> src/activity-ui.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#activityAnswer",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#activityEditor",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#applyActivityField",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#switchType",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#solutionText",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#approvedMarkup",
+      "pass": true
+    },
+    {
+      "name": "Import exists: tests/activities-v2.js -> src/presentation.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#publicStageState",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#screenMarkup",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: tests/activities.html",
+      "pass": true
+    },
+    {
+      "name": "HTML IDs unique: tests/activities.html",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: tests/scenarios.js",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: src/design.js",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: src/stage-activities.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/stage-activities.js -> src/core.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#escapeHTML",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/core.js#safeURL",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/stage-activities.js -> src/activities.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#TYPES",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#kind",
+      "pass": true
+    },
+    {
+      "name": "Import exists: src/stage-activities.js -> src/activity-ui.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#solutionText",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activity-ui.js#approvedMarkup",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: assets/pop.css",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: assets/mascot-pop.svg",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: tests/design-pop.js",
+      "pass": true
+    },
+    {
+      "name": "Import exists: tests/design-pop.js -> src/activities.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#TYPES",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#activityDefaults",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/activities.js#publicQuestion",
+      "pass": true
+    },
+    {
+      "name": "Import exists: tests/design-pop.js -> src/stage-activities.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/stage-activities.js#stageActivityMarkup",
+      "pass": true
+    },
+    {
+      "name": "Import exists: tests/design-pop.js -> src/presentation.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#participantHome",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#publicStageState",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/presentation.js#screenMarkup",
+      "pass": true
+    },
+    {
+      "name": "Import exists: tests/design-pop.js -> src/design.js",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/design.js#textSizeClass",
+      "pass": true
+    },
+    {
+      "name": "Named export exists: src/design.js#applyReading",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: KEMAS-KINI-DESIGN-POP.md",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: tests/design.html",
+      "pass": true
+    },
+    {
+      "name": "HTML IDs unique: tests/design.html",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: VERSION.txt",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: README.md",
+      "pass": true
+    },
+    {
+      "name": "Safe archive path: MULA-DI-SINI.md",
+      "pass": true
+    },
+    {
+      "name": "White text contrast >=4.5: #7144c9",
+      "pass": true
+    },
+    {
+      "name": "White text contrast >=4.5: #0e719b",
+      "pass": true
+    },
+    {
+      "name": "White text contrast >=4.5: #a45413",
+      "pass": true
+    },
+    {
+      "name": "White text contrast >=4.5: #08765e",
+      "pass": true
+    },
+    {
+      "name": "White text contrast >=4.5: #625b77",
+      "pass": true
+    },
+    {
+      "name": "Overlay retains existing config byte-for-byte",
+      "pass": true
+    },
+    {
+      "name": "POP stylesheet loads after activity styles",
+      "pass": true
+    },
+    {
+      "name": "Visible version markers exist",
+      "pass": true
+    },
+    {
+      "name": "TV uses audience renderer",
+      "pass": true
+    }
+  ],
+  "contrast_white_text_on_background": {
+    "#7144c9": 6.23,
+    "#0e719b": 5.45,
+    "#a45413": 5.45,
+    "#08765e": 5.58,
+    "#625b77": 6.4
+  },
+  "visually_rendered": [
+    "1920x1080 TV question",
+    "1920x1080 TV fill",
+    "1920x1080 TV reveal/ranking",
+    "1920x1080 TV lobby",
+    "1920x1080 TV podium",
+    "1280x720 TV question",
+    "390x1000 phone answer",
+    "390x1400 phone join"
+  ],
+  "not_verified": [
+    "Deployed GitHub Pages installation",
+    "Supabase RPC and realtime after deployment",
+    "Physical TV viewing distance and Extend mode",
+    "Real touch/drag/audio/capture/upload/reconnect",
+    "External Google Fonts loading; fixtures use system fallback",
+    "All authored content lengths/themes/device combinations"
+  ]
+}

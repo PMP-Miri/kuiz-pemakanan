@@ -1,5 +1,5 @@
-import {CONFIG} from '../config.js';
-import {demo} from './demo.js';
+import {CONFIG} from '../config.js?v=pop3';
+import {demo} from './demo.js?v=pop3';
 let modulePromise;
 const clients={};
 async function client(host=true){
@@ -10,7 +10,7 @@ async function client(host=true){
  const c=createClient(CONFIG.supabaseUrl,CONFIG.supabasePublishableKey,{auth:{storage:host?localStorage:sessionStorage,storageKey:host?'nutriarena-host-auth':'nutriarena-player-auth',persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
  clients[host?'host':'player']=c;return c;
 }
-async function rpc(name,args,host=true){const c=await client(host);const {data,error}=await c.rpc(name,args);if(error)throw Error(error.message);return data;}
+async function rpc(name,args,host=true){const c=await client(host);const {data,error}=await c.rpc(name,args);if(error){if(error.code==='PGRST202'&&['na_answer_v2','na_review'].includes(name))throw Error('Sila jalankan 002_activities.sql dalam SQL Editor Supabase dahulu.');throw Error(error.message);}return data;}
 export const api = CONFIG.mode==='demo' ? demo : {
  async login(email,password){const c=await client();const {error}=await c.auth.signInWithPassword({email,password});if(error)throw Error(error.message);await rpc('na_manage',{p_action:'dashboard',p_data:{}});},
  async logout(){const c=await client();const {error}=await c.auth.signOut();if(error)throw Error(error.message);},
@@ -22,7 +22,19 @@ export const api = CONFIG.mode==='demo' ? demo : {
   return rpc('na_join',{p_code:code,p_name:name,p_participant_code:participantCode},false);
  },
  state(code,host=false){return rpc('na_state',{p_code:code},host);},
- answer(code,qid,selected){return rpc('na_answer',{p_code:code,p_question_id:qid,p_selected:selected},false);},
+ answer(code,qid,selected){return rpc('na_answer_v2',{p_code:code,p_question_id:qid,p_response:selected},false);},
+ review(code,playerID,qid,decision){return rpc('na_review',{p_code:code,p_player_id:playerID,p_question_id:qid,p_decision:decision});},
+ async mediaURL(path){const c=await client();const {data,error}=await c.storage.from('nutriarena-responses').createSignedUrl(path,300);if(error)throw Error(error.message);return data.signedUrl;},
+ async uploadResponse(file,code,qid){
+  const allowed=['audio/webm','audio/ogg','audio/mpeg','audio/mp4','audio/wav','audio/x-wav','video/mp4','video/webm','video/quicktime'];
+  const mime=file.type.split(';')[0];if(!allowed.includes(mime)||file.size>10*1024*1024||file.size<1)throw Error('Pilih audio/video disokong, maksimum 10 MB.');
+  const state=await this.state(code,false);if(state.room.status!=='question'||state.question?.id!==qid)throw Error('Soalan telah berubah atau dikunci.');
+  if(state.question.type==='audio'&&!mime.startsWith('audio/'))throw Error('Soalan ini memerlukan fail audio.');
+  if(state.question.type==='video_response'&&!mime.startsWith('video/'))throw Error('Soalan ini memerlukan fail video.');
+  const c=await client(false),ext={'audio/webm':'webm','audio/ogg':'ogg','audio/mpeg':'mp3','audio/mp4':'m4a','audio/wav':'wav','audio/x-wav':'wav','video/mp4':'mp4','video/webm':'webm','video/quicktime':'mov'}[mime];
+  const path=state.room.id+'/'+state.player.id+'/'+qid+'/'+crypto.randomUUID()+'.'+ext;
+  const {error}=await c.storage.from('nutriarena-responses').upload(path,file,{contentType:mime,upsert:false});if(error)throw Error(error.message);return {path};
+ },
  control(code,action){return rpc('na_control',{p_code:code,p_action:action});},
  async subscribe(code,host,callback){const c=await client(host);const ch=c.channel('room-'+code+'-'+(host?'host':'player')).on('postgres_changes',{event:'UPDATE',schema:'public',table:'na_rooms',filter:'code=eq.'+code},callback).subscribe();return ()=>{c.removeChannel(ch);};},
  async upload(file){

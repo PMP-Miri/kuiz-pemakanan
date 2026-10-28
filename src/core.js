@@ -1,3 +1,4 @@
+import {TYPES,validateActivity,activityDefaults} from './activities.js?v=pop3';
 export const THEMES = { aurora: 'Aurora Ungu', ocean: 'Ocean Teal', sunset: 'Sunset Coral' };
 export const uid = () => crypto.randomUUID();
 export const escapeHTML = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -24,19 +25,10 @@ export function validateQuiz(q, ready = true) {
     for (const [key,max] of [['text',1000],['topic',100],['explanation',2000],['sourceLabel',200],['image',2000],['source',2000]]) {
       if (x[key] !== undefined && (typeof x[key] !== 'string' || x[key].length > max)) errors.push(n + key + ' mesti teks (maksimum ' + max + ' aksara).');
     }
-    if (!['mcq','tf'].includes(x.type)) errors.push(n + 'jenis soalan tidak sah.');
-    if (!Array.isArray(x.options) || x.options.length < 2 || x.options.length > 4 || x.options.some(o => typeof o !== 'string' || o.length > 300)) errors.push(n + 'format pilihan tidak sah.');
+    errors.push(...validateActivity(x,ready).map(s=>n+s));
     if (x.image && !safeURL(x.image)) errors.push(n + 'gambar mesti pautan HTTPS.');
     if (x.source && !safeURL(x.source)) errors.push(n + 'pautan sumber mesti HTTPS.');
-    if (typeof x.seconds !== 'number' || !Number.isFinite(x.seconds)) errors.push(n + 'masa mesti nombor.');
-    if (!Number.isInteger(x.correct)) errors.push(n + 'indeks jawapan mesti integer.');
-    if (!ready) return;
-    if (typeof x.text !== 'string' || !x.text.trim()) errors.push(n + 'teks soalan diperlukan.');
-    if (!['mcq','tf'].includes(x.type)) errors.push(n + 'jenis soalan tidak sah.');
-    if (!Array.isArray(x.options) || x.options.length < 2 || x.options.length > 4 || x.options.some(o => !String(o).trim() || String(o).length > 300)) errors.push(n + 'isi 2 hingga 4 pilihan (maksimum 300 aksara setiap pilihan).');
-    if (!Number.isInteger(x.correct) || x.correct < 0 || x.correct >= (x.options || []).length) errors.push(n + 'tandakan jawapan betul.');
-    if (!Number.isInteger(x.seconds) || x.seconds < 5 || x.seconds > 120) errors.push(n + 'masa perlu 5 hingga 120 saat.');
-    if (x.type === 'tf' && x.options?.length !== 2) errors.push(n + 'Betul/Salah perlu tepat 2 pilihan.');
+    if (ready && (typeof x.text!=='string'||!x.text.trim())) errors.push(n+'teks soalan diperlukan.');
   });
   return errors;
 }
@@ -52,6 +44,7 @@ export function rankRows(rows) {
   return sorted;
 }
 export function pairedReport(pre, post, total) {
+  if (!Number.isFinite(total)||total<=0) return {pairs:[],preMean:null,postMean:null,delta:null,improved:0,same:0,declined:0,unpairedPre:pre.length,unpairedPost:post.length};
   const pm = new Map(pre.map(x => [x.participant_code, x]));
   const pairs = post.filter(x => pm.has(x.participant_code)).map(x => {
     const before = pm.get(x.participant_code);
@@ -61,7 +54,7 @@ export function pairedReport(pre, post, total) {
   return {pairs, preMean:mean('pre'), postMean:mean('post'), delta:mean('delta'), improved:pairs.filter(p=>p.delta>0).length, same:pairs.filter(p=>p.delta===0).length, declined:pairs.filter(p=>p.delta<0).length, unpairedPre:pre.filter(p=>!post.some(x=>x.participant_code===p.participant_code)).length, unpairedPost:post.filter(p=>!pm.has(p.participant_code)).length};
 }
 export function csv(rows) { return '\uFEFF' + rows.map(row => row.map(value => { let s=String(value??''); if (/^[\s]*[=+\-@\t\r]/.test(s)) s="'"+s; return '"'+s.replace(/"/g,'""')+'"'; }).join(',')).join('\r\n'); }
-export function newQuestion() { return {id:uid(), type:'mcq', text:'', options:['','','',''], correct:0, seconds:20, image:'', explanation:'', source:'', sourceLabel:'', topic:'Umum'}; }
+export function newQuestion() { return {id:uid(), ...activityDefaults('mcq'),text:'', options:['','','',''],seconds:20,image:'',explanation:'',source:'',sourceLabel:'',topic:'Umum'}; }
 export function newQuiz() { return {id:uid(), title:'', description:'', theme:'aurora', status:'draft', questions:[newQuestion()]}; }
 export function demoQuiz() {
   const q = newQuiz(); q.title='Jelajah Ilmu: Demo Platform'; q.description='Soalan demonstrasi fungsi sahaja. Gantikan dengan soalan pemakanan yang disemak pegawai.'; q.status='ready';
@@ -70,4 +63,10 @@ export function demoQuiz() {
     {text:'Skor pengetahuan perlu dipisahkan daripada bonus kelajuan.',options:['Betul','Salah'],correct:0,explanation:'Dalam platform ini, peratus pengetahuan dikira daripada jawapan betul. Mata permainan boleh mengandungi bonus kelajuan.',topic:'Penilaian',type:'tf'},
     {text:'Apakah yang diperlukan untuk laporan pra/pasca berpasangan?',options:['Nama sama sahaja','Warna avatar sama','Kod peserta yang sama','Telefon model sama'],correct:2,explanation:'Kod peserta memadankan rekod pra dan pasca walaupun nama peserta serupa.',topic:'Penilaian'}
   ].map(x=>({...newQuestion(),...x})); return q;
+}
+
+export function activityGallery(imageURL='https://example.org/diagram.svg') {
+ const q=newQuiz();q.title='Galeri 26 Jenis Aktiviti';q.description='Templat DEMO fungsi, bukan bahan pendidikan yang disahkan. Sunting sebelum digunakan.';q.status='draft';
+ q.questions=Object.keys(TYPES).map(type=>({...newQuestion(),...activityDefaults(type),text:'Demo: '+TYPES[type][0],seconds:['video','audio','video_response','draw','passage','multipart'].includes(type)?180:45,topic:'Demo Aktiviti',...(['label','hotspot'].includes(type)?{image:imageURL}:{})}));
+ return q;
 }
