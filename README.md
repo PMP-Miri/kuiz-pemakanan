@@ -2,7 +2,9 @@
 
 Platform kuiz berbahasa Melayu untuk booth dan program pendidikan. Frontend statik sesuai untuk GitHub Pages, tanpa bundler. Mod live menggunakan Supabase. Ini versi asas berfungsi yang perlu menjalani ujian penerimaan dengan peranti sebenar sebelum acara.
 
-**Mulakan dengan `MULA-DI-SINI.md` untuk langkah ringkas GitHub, ranking dan pra/pasca.** Keputusan semakan yang benar-benar dijalankan direkodkan dalam `VERIFICATION.md`.
+**Sudah sambungkan Supabase? Gunakan ZIP kemas kini Ceria dan ikut `KEMAS-KINI-CERIA.md`. Jangan timpa `config.js` live atau jalankan semula SQL.** Untuk pemasangan baharu, mulakan dengan `MULA-DI-SINI.md`. Keputusan semakan yang benar-benar dijalankan direkodkan dalam `VERIFICATION.md`.
+
+Buka `pratonton.html` untuk melihat contoh lima paparan tanpa menyentuh data Supabase. Nama, skor dan jumlah peserta di situ ialah contoh yang dilabel, bukan sesi live.
 
 ## Yang disediakan
 
@@ -15,7 +17,9 @@ Platform kuiz berbahasa Melayu untuk booth dan program pendidikan. Frontend stat
 - Muzik instrumental sintesis dalam browser, kawalan hidup/mati dan skrin penuh. Klik muzik untuk mengaktifkannya. Tiada lagu komersial disertakan.
 - Ranking awam pilihan, bilangan tempat pemenang 1 hingga 10, podium dan pengendalian seri.
 - Monitor pegawai menunjukkan nama, jumlah dijawab, betul, ketepatan semasa dan status menjawab soalan terkini.
-- Paparan pentas menyembunyikan monitor peribadi. Laporan terperinci tidak dimaksudkan untuk projektor awam.
+- Paparan TV dalam tetingkap berasingan (`#/screen/KOD`), tanpa monitor individu, kod peserta, butang kawalan sesi atau laporan. Panel pegawai kekal pada laptop.
+- Halaman peserta tidak memaparkan butang Studio Pegawai. Pegawai menggunakan `pegawai.html`.
+- Reka bentuk Ceria: latar pastel, empat warna jawapan berkontras, maskot SVG tempatan, lobi meriah dan konfeti podium. `assets/ceria.css` melapisi gaya asal.
 - Pra/pasca dengan kod peserta 12 aksara, salinan soalan yang sama, susunan soalan/pilihan boleh rawak. Pra tidak mendedahkan jawapan, penerangan, ranking awam atau bonus kelajuan.
 - Laporan individu, analisis setiap soalan, laporan pasangan lengkap, pengiktirafan Lonjakan Ilmu, CSV UTF-8 dengan BOM dan perlindungan asas formula CSV, serta cetak ke PDF melalui browser.
 - Sesi menyimpan snapshot. Edit kuiz asal tidak mengubah sesi aktif. Pasca menyalin snapshot pra, bukan kandungan kuiz yang mungkin sudah berubah.
@@ -32,6 +36,15 @@ src/core.js      # validasi, skor, ranking, pasangan dan CSV
 src/demo.js      # data browser sahaja
 src/api.js       # penyambung Supabase
 src/audio.js     # muzik sintesis
+src/presentation.js # model TV ditapis, paparan TV dan halaman peserta
+pegawai.html     # pintu masuk pegawai yang tidak dipautkan pada halaman peserta
+assets/ceria.css
+assets/arena-party.svg
+KEMAS-KINI-CERIA.md
+pratonton.html   # demo rupa sahaja, data contoh yang dilabel
+src/preview.js
+assets/display.css
+tests/presentation.html # semakan model, markup, peranan dan aliran dengan API tiruan
 supabase/schema.sql
 supabase/acceptance-tests.md
 tests/check.mjs
@@ -50,7 +63,7 @@ package.json
 1. Ekstrak kandungan folder ini sebagai akar repositori GitHub.
 2. Di repositori: Settings > Pages. Pilih kaedah penerbitan daripada branch, kemudian branch utama dan folder root. Nama menu mungkin berbeza mengikut versi GitHub.
 3. Buka alamat Pages yang GitHub berikan. Jangan buka `index.html` terus melalui `file://` kerana modul JavaScript perlu dilayan melalui HTTP/HTTPS.
-4. Klik **Studio Pegawai**. Mod demo tidak meminta log masuk dan ada kuiz demonstrasi platform, bukan fakta pemakanan yang disahkan.
+4. Buka `pegawai.html` pada alamat projek yang sama. Mod demo tidak meminta log masuk dan ada kuiz demonstrasi platform, bukan fakta pemakanan yang disahkan. Halaman utama ialah halaman peserta, tanpa butang Studio.
 5. Sunting atau cipta kuiz, terbitkan, kemudian buka sesi.
 6. Pada lobi, klik **Uji peserta** untuk membuka tab berasingan dalam browser/profil yang SAMA. Jawab menggunakan tab itu dan kawal soalan pada tab pengacara.
 
@@ -110,7 +123,7 @@ Muat naik perubahan ke repositori. Apabila Pages selesai diterbitkan, muat semul
 2. **Simpan draf** atau **Terbitkan kuiz**. Draf tidak boleh membuka sesi.
 3. **Buka sesi**, pilih Pertandingan, tentukan ranking, bonus kelajuan dan tempat pemenang.
 4. Paparkan kod atau QR. Peserta masuk dengan nama panggilan.
-5. Hidupkan muzik jika dikehendaki. Klik **Paparan pentas** sebelum memaparkan pada TV awam jika tidak mahu monitor prestasi individu kelihatan.
+5. Klik **Buka TV ↗**, benarkan pop-up jika diminta. Gunakan mod paparan **Extend**, seret tetingkap TV ke skrin kedua dan klik ⛶. Kekalkan panel kawalan pada laptop. Klik muzik pada tetingkap TV jika dikehendaki. Jangan tayangkan panel pegawai menggunakan Mirror. Panduan lengkap: `KEMAS-KINI-CERIA.md`.
 6. Klik **Mulakan kuiz**. Peserta menjawab pada telefon. Pengacara boleh mengunci awal. Selepas masa tamat, lawatan state seterusnya mengunci soalan walaupun tab pengacara terbiar.
 7. Klik **Soalan seterusnya**, dan **Tamat & keputusan** selepas soalan terakhir.
 8. Podium dan ranking muncul jika diaktifkan. Pegawai membuka laporan untuk rekod dan eksport.
@@ -149,7 +162,8 @@ Pasca menyalin item dan jawapan daripada snapshot pra. Susunan boleh berbeza. Ti
 - Kata laluan pegawai disimpan oleh Supabase Auth, bukan dalam kod ini. Token host berada dalam localStorage; jangan gunakan komputer awam tanpa log keluar. Peranti yang terjejas masih berisiko.
 - Identiti peserta live disimpan dalam sessionStorage. Muat semula tab boleh sambung semula. Menutup tab/memadam data browser boleh menghilangkan akses kepada identiti anonymous tersebut. Versi ini tidak mempunyai pemulihan akaun peserta. Gunakan kod peserta pra untuk padanan pasca, bukan pemulihan sesi pra.
 - Tiada sokongan offline live atau pelayan LAN dalam versi ini. Internet diperlukan untuk Supabase dan library CDN. Sediakan hotspot sandaran.
-- Skrin ada kawalan saiz responsif dan reduced-motion. Tiada audio daripada telefon melainkan peserta menghidupkan muzik sendiri; pengacara disarankan memainkan muzik pada TV sahaja.
+- Skrin ada kawalan saiz responsif dan reduced-motion. Butang muzik hanya muncul pada paparan TV. Telefon peserta dan panel pegawai tidak memainkan muzik.
+- Paparan TV menggunakan sesi Auth pegawai pada laptop yang sama; ia bukan endpoint awam berasingan. Respons host ditapis dengan whitelist sebelum dijadikan model dan DOM TV. Ini pengasingan paparan, bukan sempadan keselamatan terhadap seseorang yang mengawal browser pegawai. Jangan kongsi pautan TV kepada peserta atau gunakan komputer awam yang tidak dipercayai.
 - Had aplikasi ialah 50 soalan dan 200 penyertaan satu bilik. Ini had validasi, BUKAN keputusan ujian beban atau jaminan kapasiti. Uji bilangan peserta sasaran sebenar.
 - Polling 2.5 saat boleh menghasilkan beban pangkalan data apabila ramai peserta. Ukur dahulu sebelum acara besar. Semak kos/kuota pada penyedia, bukan andaikan percuma tanpa had.
 - Pemasangan bergantung pada CDN Supabase JS `2.57.4`, QR `1.5.4` dan Turnstile jika digunakan. Versi dipinkan untuk kebolehulangan, bukan dakwaan versi terkini. Tiada service worker/cache offline.

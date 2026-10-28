@@ -5,7 +5,7 @@
 1. Ekstrak ZIP. Gunakan kandungan folder `nutriarena` sebagai akar repositori GitHub.
 2. Pastikan `index.html`, `config.js`, `.nojekyll`, `src/` dan `assets/` berada di akar repositori, bukan dalam satu lagi folder bertingkat.
 3. Aktifkan GitHub Pages melalui Settings > Pages, penerbitan daripada branch utama dan folder root.
-4. Buka alamat GitHub Pages yang diberikan. Klik **Studio Pegawai**.
+4. Untuk pegawai, buka `pegawai.html` pada alamat GitHub Pages yang sama. Halaman utama `index.html` khusus untuk peserta dan tidak memaparkan butang Studio Pegawai.
 5. Cipta kuiz atau gunakan contoh. Isi soalan, jawapan, penerangan, gambar dan sumber. Klik **Terbitkan kuiz**.
 6. Klik **Buka sesi**, kemudian cipta bilik.
 7. Klik **Uji peserta** untuk tab peserta. Daftar nama di tab itu. Kembali ke tab pengacara dan mulakan kuiz.
@@ -43,7 +43,7 @@ Semasa **Buka sesi**, pegawai boleh:
 - Hidupkan atau matikan bonus kelajuan.
 - Rawakkan soalan dan pilihan jawapan.
 
-Ranking awam dipaparkan antara soalan dan pada keputusan akhir. Monitor pegawai dikemas kini semasa peserta menjawab. Ia menunjukkan nama, jumlah dijawab, bilangan betul dan status jawapan semasa. Klik **Paparan pentas** sebelum projektorkan jika monitor individu tidak patut dipaparkan.
+Ranking awam dipaparkan antara soalan dan pada keputusan akhir. Monitor pegawai dikemas kini semasa peserta menjawab. Ia menunjukkan nama, jumlah dijawab, bilangan betul dan status jawapan semasa. Klik **Buka TV ↗** untuk tetingkap penonton yang berasingan. Panel pegawai kekal pada laptop; seret tetingkap TV ke paparan kedua menggunakan **Extend**, bukan Mirror. Muzik dihidupkan pada tetingkap TV sahaja. Rajah aliran dan langkah kemas kini ada dalam `KEMAS-KINI-CERIA.md`.
 
 Betul = 1000 mata. Bonus kelajuan pilihan = sehingga 500 mata. Peratus pengetahuan tidak menggunakan bonus. Seri ditentukan dengan mata, bilangan betul dan masa terkumpul; jika semuanya sama, tempat dikongsi. Had tempat pemenang merangkumi semua peserta seri pada tempat terakhir. Peraturan perlu dimaklumkan sebelum pertandingan.
 

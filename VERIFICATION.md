@@ -1,6 +1,34 @@
-# Status semakan NutriArena v1
+# Status semakan NutriArena Ceria
 
-## Dilaksanakan dan lulus
+## Semakan akhir pembungkusan, 28 Oktober 2026
+
+- **61 semakan khusus lulus** dalam sandbox JavaScript menggunakan badan fungsi `publicStageState`, `rankRows` dan `roleChrome` yang disalin daripada sumber semasa. Meliputi matriks 24 gabungan fasa/status/ranking, jawapan pra kekal tersembunyi, medan peribadi tidak masuk model TV, ranking seri, sumber tidak dimutasi dan navigasi/audio mengikut peranan. DOM minimum digunakan, bukan browser sebenar. Sebahagian semakan bertindih dengan ujian terdahulu; nombor ini bukan 61 ciri berasingan.
+- **36 semakan struktur lulus**: rujukan HTML dan import modul tempatan wujud, halaman awal ialah peserta, pautan pegawai serta muzik tersembunyi pada permulaan, `.nojekyll` wujud dan fail terlindung sama dengan versi asal.
+- `config.js`, `supabase/schema.sql`, `src/api.js`, `src/core.js` dan `src/demo.js` dibandingkan byte demi byte dengan ZIP projek asal: tiada perubahan. Fail frontend Ceria yang digunakan untuk pembungkusan dibandingkan dengan fail workspace semasa.
+- ZIP akhir menggunakan akar terus, bukan folder `nutriarena/` bertingkat. ZIP kemas kini tidak mempunyai `config.js` atau fail SQL. Lihat `CERIA-CHECKS.json` untuk hash dan semakan arkib yang direkodkan semasa pembungkusan.
+- Parser CSS khusus tidak tersedia. Semakan struktur fail bukan pengesahan CSS atau kebolehbacaan paparan sebenar. Ujian browser, audio, Extend dan backend live kekal belum dijalankan.
+
+## Kemas kini Ceria: rekod semakan terdahulu
+
+- **37 semakan model/markup** `presentation.js` lulus dalam sandbox JavaScript. Badan fungsi dan senario disalin daripada fail semasa, dengan import/export dibuang. Meliputi whitelist TV, tiada kod peserta, jawapan tidak didedahkan awal, pra, ranking OFF, podium seri, escape input dan halaman peserta tanpa pautan pegawai. Ini semakan markup, bukan render visual.
+- **11 semakan roleChrome** lulus dengan DOM minimum: navigasi pegawai disembunyikan bagi home/join/play/TV, dikekalkan dalam panel pegawai, muzik hanya tersedia pada TV dan dihentikan apabila bertukar peranan.
+- Pratonton diuji dengan DOM tiruan untuk **5 adegan**, perubahan tema dan sekatan submit. Ia tidak memanggil API/Auth atau merekod peserta sebenar. Sintaks modul pratonton dikompilasi selepas import statik dibuang.
+- Sintaks fungsi `liveView` semasa berjaya dikompilasi menggunakan Function constructor. Ini bukan pengesahan keseluruhan aliran rangkaian.
+- Semakan struktur, integriti ZIP serta perbandingan fail backend dan konfigurasi direkodkan dalam `CERIA-CHECKS.json` selepas pembungkusan.
+
+### Belum disahkan untuk kemas kini ini
+
+- Percubaan menjalankan harness async dalam sandbox gagal kerana batas persekitaran (`expecting ','` bagi top-level await, kemudian `Lifetime not alive` bagi Promise). Tiada keputusan lulus diandaikan daripada percubaan tersebut.
+- `tests/display-flow.js` mengandungi ujian API/pemasa tiruan untuk dijalankan dalam browser melalui `tests/presentation.html`. Ujian async ini **belum dijalankan dengan berjaya di sini**. Halaman ujian turut menyediakan kompilasi modul frontend semasa dan 37 + 11 semakan di atas. Halaman itu belum dibuka dalam browser sebenar.
+- Rupa/CSS pada browser dan TV sebenar, tetingkap pop-up, mod Extend, fullscreen, bunyi dan peranti berasingan belum diuji di sini.
+- Tiada akses kepada repositori GitHub atau Supabase Hafiz. Penerbitan dan data live tidak diubah atau disahkan.
+- Tiada SQL diubah. Fail `config.js` sengaja tidak disertakan dalam ZIP kemas kini supaya tetapan live Hafiz tidak ditimpa.
+
+## Rekod versi asas sebelum kemas kini Ceria
+
+Bahagian berikut ialah rekod semakan terdahulu yang disertakan dalam projek, bukan dakwaan bahawa semuanya dijalankan semula pada giliran kemas kini ini.
+
+## Dilaksanakan dan lulus dalam versi asas
 
 ### 59 semakan logik
 
