@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Semakan NutriArena</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><main><section class="glass form-card"><span class="eyebrow">NUTRIARENA · SEMAKAN TEMPATAN</span><h1>Ujian logik</h1><p class="muted">Menggunakan storan tiruan dalam memori. Rekod kuiz browser anda tidak diubah. Ini bukan ujian sambungan Supabase atau rupa paparan.</p><button id="run" class="btn primary">Jalankan semakan</button><p id="status" role="status"></p><ol id="results"></ol><a class="btn ghost" href="../index.html">Kembali ke aplikasi</a></section></main>
+<script type="module">
+import * as core from '../src/core.js';
+import {runScenarios} from './scenarios.js';
+class MemoryStorage {constructor(){this.map=new Map();}getItem(k){return this.map.has(k)?this.map.get(k):null;}setItem(k,v){this.map.set(k,String(v));}removeItem(k){this.map.delete(k);}}
+const run=document.querySelector('#run'),status=document.querySelector('#status'),results=document.querySelector('#results');
+run.onclick=async()=>{
+ run.disabled=true;results.replaceChildren();status.textContent='Menjalankan semakan…';
+ try{
+  const files=['../src/core.js','../src/demo.js','../src/app.js','../src/api.js','../src/audio.js','../config.js','./scenarios.js'];
+  for(const path of files){const res=await fetch(path,{cache:'no-store'});if(!res.ok)throw Error('Tidak dapat baca '+path);new Function((await res.text()).replace(/^import .*?;\s*/gm,'').replace(/\bexport /g,''));}
+  const source=await (await fetch('../src/demo.js',{cache:'no-store'})).text();
+  const local=new MemoryStorage(),session=new MemoryStorage(),events=new EventTarget();
+  const demo=new Function('uid','demoQuiz','validateQuiz','shuffle','scoreAnswer','localStorage','sessionStorage','window','navigator',source.replace(/^import .*?;\s*/gm,'').replace(/\bexport /g,'')+'\nreturn demo;')(core.uid,core.demoQuiz,core.validateQuiz,core.shuffle,core.scoreAnswer,local,session,events,{locks:{request:async(key,fn)=>fn()}});
+  const result=await runScenarios(core,demo,{participant:id=>session.setItem('nutriarena-demo-player',id),expire:code=>{const key='nutriarena-demo-v1',d=JSON.parse(local.getItem(key));d.rooms.find(r=>r.code===code).opened_at=new Date(Date.now()-180000).toISOString();local.setItem(key,JSON.stringify(d));}});
+  status.textContent=result.checks+' semakan logik lulus. Sintaks tujuh fail juga lulus.';
+  for(const name of result.names){const li=document.createElement('li');li.textContent='✓ '+name;results.append(li);}
+ }catch(err){status.textContent='GAGAL: '+err.message;}
+ finally{run.disabled=false;}
+};
+</script></body></html>

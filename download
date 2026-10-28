@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+.env
+.env.*
+*.log
+# config.js intentionally contains only PUBLIC frontend configuration.
+# Never commit database passwords, service_role keys, or CAPTCHA secrets.
