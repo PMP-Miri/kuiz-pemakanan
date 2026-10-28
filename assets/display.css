@@ -1,0 +1,11 @@
+/* Panduan pegawai dan penyesuaian kawalan untuk skrin kecil. */
+.host-display-notice{display:flex;align-items:center;gap:16px;background:#fff9e7;border:1px solid #ebd6a1;border-radius:18px;padding:16px 20px;margin:0 0 22px;color:#60441c}
+.host-display-notice .display-icon{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:13px;background:#ffedb7;font-size:28px}
+.host-display-notice>div{flex:1;min-width:0}.host-display-notice strong{font-size:.9rem}.host-display-notice p{font-size:.8rem;line-height:1.6;margin:4px 0 0}.host-display-notice .btn{flex:none;color:#60441c;border-color:#e8ce90;background:#fffdf4}
+body[data-role=screen] .answer{cursor:default}
+body[data-role=screen] .screen-result .podium{flex-wrap:wrap}
+body[data-role=screen] .question-title,body[data-role=screen] .answer span,body[data-role=screen] .podium-card h3{overflow-wrap:anywhere}
+body[data-role=host] .monitor{min-width:0;max-height:75vh;overflow:auto}
+body[data-role=host] .monitor thead{position:sticky;top:0;background:#fffdf7;z-index:1}
+@media(max-width:760px){.host-display-notice{align-items:flex-start;flex-wrap:wrap;padding:14px;gap:10px}.host-display-notice .display-icon{width:34px;height:34px;font-size:22px}.host-display-notice .btn{margin-left:44px}.host-display-notice>div{flex-basis:calc(100% - 50px)}body[data-role=host] .arena-badges{justify-content:flex-start}body[data-role=host] .monitor{max-height:none}}
+@media print{.host-display-notice{display:none!important}}
